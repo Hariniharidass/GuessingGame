@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { allCountries } from "country-region-data";
+import CountryCode from "./CountryCode";
 
 const Form = () => {
   const [name, setName] = useState("");
@@ -32,17 +32,6 @@ const Form = () => {
     searchCode();
   }, [nationality]);
 
-  // To toggle class for result div
-  function changeClass() {
-    const divElement = document.getElementById("resultDiv");
-    if (divElement.classList.contains("hidden")) {
-      divElement.className = "block";
-      divElement.classList.remove("hidden");
-    } else if (divElement.classList.contains("block")) {
-      divElement.className = "hidden";
-      divElement.classList.remove("block");
-    }
-  }
   // To retrieve country code and country with maximum probabilty
   function searchCode() {
     nationality.map((country) =>
@@ -55,7 +44,6 @@ const Form = () => {
     const countryNameIndex = countryCode.indexOf(max);
     setMaxProbability(max);
     setGuessedCountry(countryCode[countryNameIndex + 1]);
-    changeClass();
   }
 
   return (
@@ -90,13 +78,11 @@ const Form = () => {
           Guess !{" "}
         </button>
       </div>
-
-      <div className="5xl hidden" id="resultDiv">
-        The name <span className="text-2xl"> {prevName} </span>
-        is from <span className="text-2xl"> {guessedCountry} </span>
-        with max probabilty of
-        <span className="text-2xl"> {maxProbabilty}% </span>
-      </div>
+      <CountryCode
+        name={prevName}
+        country={guessedCountry}
+        probability={maxProbabilty}
+      />
     </div>
   );
 };
