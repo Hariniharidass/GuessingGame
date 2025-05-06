@@ -1,14 +1,14 @@
-import React, { use, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { allCountries } from "country-region-data";
 
-const form = () => {
+const Form = () => {
   const [name, setName] = useState("");
   const [prevName, setPrevName] = useState("");
   const [nationality, setNationality] = useState([]);
   const [guessedCountry, setGuessedCountry] = useState("");
   const [maxProbabilty, setMaxProbability] = useState("");
 
-let countryCode = [];
+  let countryCode = [];
 
   async function handleOnClick() {
     try {
@@ -32,7 +32,7 @@ let countryCode = [];
     searchCode();
   }, [nationality]);
 
-// To toggle class for result div
+  // To toggle class for result div
   function changeClass() {
     const divElement = document.getElementById("resultDiv");
     if (divElement.classList.contains("hidden")) {
@@ -101,4 +101,4 @@ let countryCode = [];
   );
 };
 
-export default form;
+export default Form;
