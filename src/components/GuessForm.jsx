@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import CountryCode from "./CountryCode";
 
-const Form = () => {
+const GuessForm = () => {
   const [name, setName] = useState("");
   const [prevName, setPrevName] = useState("");
   const [nationality, setNationality] = useState([]);
@@ -87,4 +87,4 @@ const Form = () => {
   );
 };
 
-export default Form;
+export default GuessForm;
