@@ -18,7 +18,7 @@ const GuessForm = () => {
         );
         const data = await response.json();
         setNationality(data.country);
-        setPrevName(name);
+        setPrevName(name.toUpperCase());
         setName("");
       } else {
         alert("Please provide a valid name");
@@ -48,15 +48,15 @@ const GuessForm = () => {
 
   return (
     <div className="flex flex-col justify-center items-center">
-      <div className="text-4xl my-20">Guess your Nationality</div>
+      <div className="text-4xl my-10">Guess your Nationality</div>
 
       <div>
-        <label htmlFor="name " className="my-10 text-lg">
+        <label htmlFor="name " className="my-5 text-lg">
           {" "}
           Enter your Lastname
         </label>
       </div>
-      <div className="border-2 my-10">
+      <div className="border-2 my-5">
         <input
           className=" p-3 outline-none text-2xl"
           type="text"

@@ -1,33 +1,51 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { use, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = ({ loggedIn, username, onLogout }) => {
+  const navigate = useNavigate();
+
+  const handleLogoutAndNavigate = () => {
+    onLogout();
+    navigate("/");
+  };
   return (
-    <>
-      <nav className="my-5 h-10 w-full">
-        <ul className="fixed w-full">
-          <div className="float-left">
-            <li className="ml-9">
-              <Link className="ml-9" to="/">
-                Home
-              </Link>
-            </li>
-          </div>
-          <div className="inline-flex items-center justify-between float-right">
-            <li className="ml-9 ">
-              <Link className="ml-9" to="/login">
-                Login
-              </Link>
-            </li>
-            <li className="mx-9">
-              <Link className=" mx-9" to="/register">
-                Register
-              </Link>
-            </li>
-          </div>
-        </ul>
-      </nav>
-    </>
+    <nav className="bg-blue-800 p-8 flex justify-between items-center">
+      <h1 className="flex justify-center items-center text-white text-lg md:text-3xl font-bold cursor-pointer">
+        {" "}
+        <Link className="ml-9" to="/">
+          Guess my Nationality
+        </Link>
+      </h1>
+
+      {!loggedIn && (
+        <div className="flex items-center gap-4">
+          <Link to="/login">
+            <button className="  md:px-4 py-2 md:w-30 md:text-lg text-base text- w-20 rounded text-white cursor-pointer bg-blue-400">
+              Login
+            </button>
+          </Link>
+          <Link to="/register">
+            <button className=" md:px-4 py-2  md:w-30 w-20 md:text-lg text-base rounded text-white cursor-pointer bg-blue-400">
+              Register
+            </button>
+          </Link>
+        </div>
+      )}
+
+      {loggedIn && (
+        <div className="flex items-center gap-4">
+          <span className="text-blue-50 text-lg">Welcome, {username}!</span>
+          <Link to="/">
+            <button
+              onClick={handleLogoutAndNavigate}
+              className="md:px-4 py-2  md:w-30  w-20 rounded md:text-lg text-base text-white cursor-pointer  bg-blue-400"
+            >
+              Logout
+            </button>
+          </Link>
+        </div>
+      )}
+    </nav>
   );
 };
 
