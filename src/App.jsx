@@ -19,7 +19,7 @@ function App() {
   };
   return (
     <>
-      <BrowserRouter basename="/Hariniharidass">
+      <BrowserRouter basename="/GuessingGame">
         <Nav
           loggedIn={loggedIn}
           username={loggedInUsername}
