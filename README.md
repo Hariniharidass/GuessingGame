@@ -1,9 +1,7 @@
 # Guess my Nationality!
 
 "Guess my Nationality!" is a modern, responsive web application built with React that allows users to predict the nationality associated with a given name by leveraging an external API. The project emphasizes user authentication, a clean user interface, and efficient development practices.
-
 ---
-
 ## ✨ Features
 
 * **Nationality Prediction:** The core functionality allows users to enter a last name and receive a predicted nationality along with a probability score, powered by the `nationalize.io` API.
